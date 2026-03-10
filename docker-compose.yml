@@ -1,0 +1,23 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: dashboard-monitor-mongo
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+
+  dashboard-monitor:
+    build: .
+    container_name: dashboard-monitor
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=${PORT:-8080}
+      - MONGODB_URI=${MONGODB_URI:-mongodb://mongo:27017/dashboard_monitor}
+      - CREDENTIALS_ENCRYPTION_KEY=${CREDENTIALS_ENCRYPTION_KEY:-change-this-key-with-a-long-random-secret}
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+volumes:
+  mongo_data:

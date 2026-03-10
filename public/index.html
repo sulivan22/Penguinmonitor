@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linux Hosts Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="brand-dot"></div>
+          <div>
+            <p class="brand-title">Monitor Core</p>
+            <p class="brand-sub">Linux Fleet</p>
+          </div>
+        </div>
+
+        <button id="homeBtn" class="nav-btn active" type="button">Home</button>
+
+        <section class="sidebar-section">
+          <p class="side-label">Hosts</p>
+          <div id="hostsNav" class="hosts-nav"></div>
+          <button id="toggleAddHostBtn" class="nav-btn add" type="button">+ Add host</button>
+
+          <form id="addHostForm" class="add-host-form hidden" autocomplete="off">
+            <label>
+              Alias
+              <input id="name" type="text" placeholder="Node-Prod" required />
+            </label>
+
+            <label>
+              Host/IP
+              <input id="host" type="text" placeholder="192.168.1.50" required />
+            </label>
+
+            <div class="two-col">
+              <label>
+                Port
+                <input id="port" type="number" min="1" max="65535" value="22" required />
+              </label>
+              <label>
+                User
+                <input id="username" type="text" placeholder="root" required />
+              </label>
+            </div>
+
+            <label>
+              Auth type
+              <select id="authType">
+                <option value="password">Password</option>
+                <option value="key">SSH Key</option>
+              </select>
+            </label>
+
+            <label id="passwordGroup">
+              Password
+              <input id="password" type="password" placeholder="********" />
+            </label>
+
+            <label id="privateKeyGroup" class="hidden">
+              Private key
+              <textarea id="privateKey" rows="5" placeholder="-----BEGIN OPENSSH PRIVATE KEY-----"></textarea>
+            </label>
+
+            <label id="passphraseGroup" class="hidden">
+              Passphrase (optional)
+              <input id="passphrase" type="password" placeholder="only if needed" />
+            </label>
+
+            <button class="btn btn-dark" type="submit">Save host</button>
+          </form>
+        </section>
+      </aside>
+
+      <section class="main-panel">
+        <header class="top card">
+          <div>
+            <p id="pageKicker" class="kicker">Overview</p>
+            <h1 id="pageTitle">Home</h1>
+            <p id="pageSubtitle" class="muted">Global summary of all hosts</p>
+          </div>
+        </header>
+
+        <section id="homeView" class="view"></section>
+        <section id="hostView" class="view hidden"></section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

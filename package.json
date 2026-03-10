@@ -1,0 +1,16 @@
+{
+  "name": "linux-server-monitor-dashboard",
+  "version": "1.0.0",
+  "description": "Minimal Linux server monitoring dashboard over SSH",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^4.21.2",
+    "mongoose": "^8.23.0",
+    "ssh2": "^1.15.0"
+  }
+}
