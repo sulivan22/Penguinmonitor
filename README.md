@@ -1,3 +1,5 @@
+<img width="1370" height="838" alt="image" src="https://github.com/user-attachments/assets/67e0cb80-e2e9-4b29-b683-0ddc2ee9c613" />
+
 # Linux Server Monitor Dashboard
 
 Dashboard web para monitorizar servidores Linux por SSH, con persistencia en MongoDB para hosts e historico de metricas.
